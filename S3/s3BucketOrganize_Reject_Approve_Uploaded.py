@@ -1,5 +1,7 @@
 """
 AWS Lambda: S3 File Validation and Routing
+Put the Python Code in the Lambda > Functions > Code Source
+Make sure to Press DEPLOY
 
 This Lambda function is triggered by S3 object creation events and validates
 files uploaded to the `incoming/` prefix of an S3 bucket.
