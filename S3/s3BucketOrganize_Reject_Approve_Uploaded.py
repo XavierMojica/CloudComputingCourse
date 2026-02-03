@@ -1,3 +1,26 @@
+"""
+AWS Lambda: S3 File Validation and Routing
+
+This Lambda function is triggered by S3 object creation events and validates
+files uploaded to the `incoming/` prefix of an S3 bucket.
+
+Function behavior:
+- Processes only objects stored under the `incoming/` folder
+- Validates file extensions (pdf, jpg, jpeg, png)
+- Enforces a maximum file size of 1 MB
+- Routes approved files to `approved/`
+- Routes rejected files to `rejected/`, including rejection reasons
+- Uses an S3 copy-then-delete pattern to move objects
+
+This function is designed as a serverless file-validation gate to enforce
+upload policies and protect downstream processing pipelines.
+"""
+
+
+
+
+
+
 import boto3
 import urllib.parse
 import os
@@ -49,3 +72,5 @@ def lambda_handler(event, context):
         "size": size
 
     }
+
+
