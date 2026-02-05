@@ -1,3 +1,5 @@
+#When triggered, this Lambda sends a notification and then shuts down a specific EC2 instance.
+
 import boto3
 import os 
 from datetime import datetime
