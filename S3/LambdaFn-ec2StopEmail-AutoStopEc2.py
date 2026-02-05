@@ -1,4 +1,6 @@
 #When triggered, this Lambda sends a notification and then shuts down a specific EC2 instance.
+#This script is added to the Lambda > Functions > FnName > Code > Press DEPLOY
+#MAKE SURE PERMISSIONS ARE SET IN IAM > ROLES > FN NAME> TO GIVE SNS FULL ACCESS AND EC2FULL ACCESS 
 
 import boto3
 import os 
