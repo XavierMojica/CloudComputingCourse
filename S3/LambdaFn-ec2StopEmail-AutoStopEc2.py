@@ -24,6 +24,7 @@ def lambda_handler(event, context):
     #stopping the instance
     ec2.stop_instances(InstanceIds=[INSTANCE_ID])
 
+    #returns log that it was done
     return{
         'status': "Stop initiated", 
         'instance': INSTANCE_ID, 
