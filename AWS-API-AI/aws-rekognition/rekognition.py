@@ -17,8 +17,8 @@
 
 # sudo chmod 777 -R /opt
 # cd /opt
-# wget https://storage.googleapis.com/skl-training/aws-codelabs/rekognition/aws-rekognition.zip
-# unzip aws-rekognition.zip
+# wget https://github.com/XavierMojica/CloudComputingCourse/tree/0e6bbf31ef376a943bf2aa4c73ddd44515c5ede6/AWS-API-AI/aws-rekognition
+# unzip aws-rekognition.zip  #unzip if the file is zipped else not needed
 
 
 import boto3
@@ -29,14 +29,14 @@ def rekognize(client, imageFile):
     #We will read the file from the local disk instead from S3
     with open(imageFile, 'rb') as image:
         filecontents = image.read()
-        rekog_text = client.detect_text(Image={'Bytes': filecontents})
-        rekog_labels = client.detect_labels(Image={'Bytes': filecontents})
-        rekog_faces = client.detect_faces(Image={'Bytes': filecontents})
+        rekognition_txt = client.detect_text(Image={'Bytes': filecontents})
+        rekognition_labels = client.detect_labels(Image={'Bytes': filecontents})
+        rekognition_faces = client.detect_faces(Image={'Bytes': filecontents})
         #response=client.detect_text(Image={'S3Object':{'Bucket':bucket,'Name':photo}})
 
-    return (rekog_text, rekog_labels, rekog_faces)
+    return (rekognition_txt, rekognition_labels, rekognition_faces)
 
-
+#Code for rekognition to recognize Text data
 def extractText(rekog_response):
     print("==============================================================================================================================")
     #print(json.dumps(rekog_response, indent=4, sort_keys=True))
@@ -46,7 +46,7 @@ def extractText(rekog_response):
         print(text['DetectedText'], end=" ")
     print("\n")
 
-
+#Code to recognize Labels
 def extractLabels(rekog_response):
     print ("=============================================================================================================================")
     #print(json.dumps(rekog_response, indent=4, sort_keys=True))
@@ -55,7 +55,7 @@ def extractLabels(rekog_response):
         print("Label name is", label['Name'], "with parents", label['Parents'], "having confidence", label['Confidence'])
     print("")
 
-
+#Code to recognize Faces
 def extractFaces(rekog_response):
     print("=============================================================================================================================")
     #print(json.dumps(rekog_response, indent=4, sort_keys=True))
@@ -67,12 +67,13 @@ def extractFaces(rekog_response):
         print("")
 
 
+#File ingestion, file to be recognized 
 if __name__ == "__main__":
     client=boto3.client('rekognition')
     #Captcha.jpg Observation.jpeg soup-spoon.jpeg DennisRitchieVSSteveJobs.jpeg cheap-vs-quality.jpeg Dilbert-officepolitics.jpeg
-    imageFile = 'DennisRitchieVSSteveJobs.jpeg'
-    rekog_text, rekog_labels, rekog_faces = rekognize(client, imageFile)
-    extractText(rekog_text)
-    extractLabels(rekog_labels)
-    extractFaces(rekog_faces)
+    imageFile = 'FileName.jpeg' #add the file name 
+    rekognition_txt, rekognition_labels, rekognition_faces = rekognize(client, imageFile)
+    extractText(rekognition_txt)
+    extractLabels(rekognition_labels)
+    extractFaces(rekognition_faces)
     print("\nAll done.")
