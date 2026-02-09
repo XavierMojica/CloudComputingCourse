@@ -17,7 +17,7 @@
 
 # sudo chmod 777 -R /opt
 # cd /opt
-# wget https://github.com/XavierMojica/CloudComputingCourse/tree/0e6bbf31ef376a943bf2aa4c73ddd44515c5ede6/AWS-API-AI/aws-rekognition
+# wget https://github.com/XavierMojica/CloudComputingCourse/tree/8c6af2b11da97d0db589c14b271d02895e8a8a36/AWS-API-AI/AWS_recognition
 # unzip aws-rekognition.zip  #unzip if the file is zipped else not needed
 
 
