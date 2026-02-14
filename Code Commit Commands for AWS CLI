@@ -1,0 +1,23 @@
+# Code Commit Commands for AWS CLI 
+
+#Codebase synch commands
+
+mkdir /opt/temp
+cd /opt/temp
+To be executed on your local laptop
+scp -i your.pem HelloWorld-CodeBase.tar.gz ubuntu@PUBLIC-IP:/opt/temp
+tar -zxf HelloWorld-CodeBase.tar.gz
+cd HelloWorld
+rm -rf .git
+rsync -r /opt/temp/HelloWorld/ /opt/helloworld
+cd /opt/helloworld
+rm -rf /opt/temp
+
+
+#Git commands
+
+cd /opt/helloworld
+git add .
+git status
+git commit -a -m “First commit”
+git push origin master
